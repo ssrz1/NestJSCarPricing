@@ -1,0 +1,32 @@
+
+
+### Create a new user
+POST http://localhost:3000/auth/signup
+content-Type: application/json
+
+{
+    "email": "sajjad123@10pearls.com",
+    "password": "string"
+}
+
+### Find a user with a particular ID,
+GET  http://localhost:3000/auth/2
+
+### Find All users with given email
+
+GET  http://localhost:3000/auth?email=sajjad123@10pearls.com
+
+#### Delete a user with a given ID
+
+DELETE http://localhost:3000/auth/1
+
+###UpdateUse
+
+PATCH  http://localhost:3000/auth/2
+content-Type: application/json
+
+{
+    "email": "sajjad1s23@10pearls.com",
+    "password": "string"
+}
+

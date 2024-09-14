@@ -1,0 +1,35 @@
+typeORM helps to to persist data in our database of choosing
+in this application we are using SQlite, 
+Why we are choosing becasuse it is easier to setup later we will refactor and use postgress
+Sqlite is a file based DB, meaning Sqlitewill create a file using typeORM and create a file for DB
+we can see data in file but obviously it will be not so easy to read due to it storage mechanics
+
+when we create sqlite connection with oir root of the project it will autimatically pass it downn to our modules,
+
+in our case we have 2 modules
+
+1. users where all the info realted to user will store name, email etc.
+2. reports all the things related to reports managment
+
+When using DB there are 2 blocks that we have to consider
+
+1. Entity -> list of all the properties that (Module Name) has. [NO FUNCTIONALITY]
+2. Repository -> Methods for CRUD operations.
+
+POINT TO BE NOTE: We only have to create and worry about Entities, NESTJS and TYPEORM will work behind the scene and manage for us. 
+We will not see the Repository files even.
+
+HOW TO CREATE AN ENTITY.
+
+1. Create a new file in the folder of the module, create a class and list down all the properties your entities will have.
+2. Connect Entity to its parent module. This create a Repository (  imports: [TypeOrmModule.forFeature([User])],) <- this will create a Repository for us.
+3. Connect the Entity to the root connection (in app module)
+
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"; ALL of these are Decorators
+
+DTOS:
+DTO'sare used to validate incoming request
+
+******Serialiazation*****
+
+Uptil now when we sending a request we are also getting Password, which is Bad we dont want password to be send to client.
